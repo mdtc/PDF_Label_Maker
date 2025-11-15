@@ -179,14 +179,14 @@ def generate_labels(title, data, image_folder_name="logos", similarity_threshold
             lugar_value = row["Lugar"]
             if pd.notna(lugar_value):
                 try:
-                    lugar_int = int(float(lugar_value))
+                    lugar = str(lugar_value)
                     # Adjust the vertical position of 'lugar' based on 'actual_img_height'
                     if not found_image: 
                         lugar_y = current_y - size_font_size + (actual_img_height / 2)
                     else:
                         lugar_y = current_y - size_font_size + (.06 * inch)
 
-                    c.drawCentredString(x_center, lugar_y, str(lugar_int))
+                    c.drawCentredString(x_center, lugar_y, str(lugar))
                     current_y -= size_font_size + line_spacing  # Update current_y below lugar
                 except ValueError:
                     print(f"Warning: Invalid value '{lugar_value}' in 'Lugar' column, skipping.")
